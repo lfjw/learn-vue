@@ -1,8 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('.')) :
-  typeof define === 'function' && define.amd ? define(['.'], factory) :
-  (global = global || self, global.Vue = factory(global._));
-}(this, (function (_) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = global || self, global.Vue = factory());
+}(this, (function () { 'use strict';
 
   function _typeof(obj) {
     "@babel/helpers - typeof";
@@ -43,6 +43,7 @@
   }
 
   // 重写数组的那些方法 7个 push shift unshift pop reverse sort splice
+  // slice 并不会改变数组本身
   var oldArrayMethods = Array.prototype; // value.__proto__ = arrayMethods 原型链查找问题，会向上查找，先查找我重写的，重写的没有会继续向上查找
   // arrayMethods.__proto__ = oldArrayMethods
 
@@ -194,6 +195,12 @@
     observe(data); // 响应式原理
   }
 
+  // ast语法树  对象描述原生语法 html语法
+  function compileToFunction(template) {
+    console.log(template);
+    return function render() {};
+  }
+
   // 在原型上添加一个init方法
 
   function initMixin(Vue) {
@@ -204,7 +211,38 @@
 
       vm.$options = options; // 初始化状态
 
-      initState(vm);
+      initState(vm); // 如果用户传入了el属性，需要将页面渲染出来
+      // 如果用户传入了el 就要实现挂载流程
+
+      if (vm.$options.el) {
+        vm.$mount(vm.$options.el);
+      }
+    }; // 渲染模板优先级
+    // 1 render
+    // 2 template
+    // 3 el内容、
+
+
+    Vue.prototype.$mount = function (el) {
+      var vm = this;
+      var options = vm.$options;
+      el = document.querySelector(el); // render不需要编译，模板才需要编译
+      // 不存在render函数
+
+      if (!options.render) {
+        // 获取模板
+        var template = options.template; // 模板不存在 并且el存在，那么将模板赋值为整个的el DOM 节点
+
+        if (!template && el) {
+          template = el.outerHTML;
+        } // 需要将template转化成render方法 
+        // vue1.0 纯字符串编译 正则转换的方式
+        // vue2.0 虚拟dom 进行对比
+
+
+        var render = compileToFunction(template);
+        options.render = render;
+      }
     };
   }
 

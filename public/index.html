@@ -6,6 +6,9 @@
     <title>Document</title>
   </head>
   <body>
+    <div id='app'>
+      {{msg}}
+    </div>
     <script src="/dist/umd/vue.js"></script>
     <script>
       let vm = new Vue({
@@ -13,16 +16,9 @@
         data() {
           return {
             msg: 1,
-            arr: [{ a: 1, b: 2 }],
           };
         },
-        computed: {},
-        watch: {},
       });
-      // vm._data.msg = { a: 1 };
-      // vm._data.arr[0].a = 2
-      vm._data.arr.push({c:3})
-      console.log(vm._data);
     </script>
   </body>
 </html>
