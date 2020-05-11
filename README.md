@@ -2,9 +2,7 @@
 
 ## 如下流程实现
 - rollup的配置（已完成）
-- data进行监控（已完成）
-- data对object类型数据劫持（已完成）
-- data对Array类型数据劫持（已完成）
+- 数据劫持（已完成）
 
 - 模板编译
 - html-parser
