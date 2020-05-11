@@ -1,11 +1,11 @@
 {
-  "name": "vue2020",
+  "name": "learn-vue",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev":"rollup -c",
+    "build:dev": "rollup -c",
     "serve": "cross-env ENV=development rollup -c -w",
     "p": "bash p.sh"
   },
