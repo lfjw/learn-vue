@@ -1,8 +1,6 @@
 // 重写数组的那些方法 7个 push shift unshift pop reverse sort splice
 // slice 并不会改变数组本身
 
-import { observe } from ".";
-
 let oldArrayMethods = Array.prototype;
 // value.__proto__ = arrayMethods 原型链查找问题，会向上查找，先查找我重写的，重写的没有会继续向上查找
 // arrayMethods.__proto__ = oldArrayMethods

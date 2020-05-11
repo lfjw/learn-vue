@@ -1,7 +1,7 @@
 // 核心代码
 // Vue的声明
 
-import { initMixin} from './init';
+import { initMixin } from './init';
 
 function Vue(options) {
   // 进行Vue的初始化操作

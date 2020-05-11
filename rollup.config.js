@@ -15,8 +15,7 @@ export default {
   plugins: [ // 使用的插件
     babel({
       exclude: 'node_modules/**', // 忽略文件
-    })
-    ,
+    }),
     process.env.ENV == 'development' ? serve({
       open: true,
       openPage: '/public/index.html', // 默认打开html的路径
