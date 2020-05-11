@@ -43,8 +43,5 @@ export function initMixin(Vue) {
       const render = compileToFunction(template);
       options.render = render;
     }
-
-    
-
   }
 }
