@@ -197,7 +197,7 @@
 
   // ast语法树  对象描述原生语法 html语法
   function compileToFunction(template) {
-    console.log(template);
+    //console.log(template);
     return function render() {};
   }
 
@@ -240,7 +240,7 @@
         // vue2.0 虚拟dom 进行对比
 
 
-        var render = compileToFunction(template);
+        var render = compileToFunction();
         options.render = render;
       }
     };

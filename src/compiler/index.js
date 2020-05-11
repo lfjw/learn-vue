@@ -17,7 +17,7 @@ const attribute = /^\s*([^\s"'<>\/=]+)(?:\s*(=)\s*(?:"([^"]*)"+|'([^']*)'+|([^\s
 const defaultTagRE = /\{\{( (?:.|\r?\n)+? )\}\}/g
 
 export function compileToFunction(template) {
-    console.log(template);
+    //console.log(template);
     return function render() {
         
     }
